@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BÁO CÁO TỔNG KẾT PHÒNG ĐÀO TẠO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        :root {
+            --primary-blue: #004a99;
+            --secondary-blue: #1e88e5;
+            --accent-yellow: #ffcc00;
+            --bg-light: #f8fbff;
+            --text-dark: #1a2a3a;
+            --text-gray: #546e7a;
+            --white: #ffffff;
+            --border-color: #e1e8ed;
+        }
+
+        * { box-sizing: border-box; }
+        body { 
+            background-color: #e0e5ec; 
+            margin: 0; 
+            padding: 40px 0; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            gap: 40px; 
+            font-family: 'Roboto', sans-serif; 
+        }
+
+        .slide-container {
+            width: 1280px; 
+            height: 720px;
+            background-color: var(--white);
+            border-radius: 20px; 
+            overflow: hidden;
+            position: relative; 
+            display: flex; 
+            flex-direction: column;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+        }
+
+        .slide-header {
+            background-color: var(--accent-yellow);
+            color: var(--primary-blue);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px; 
+            font-weight: 700;
+            padding: 12px 40px; 
+            margin: 0;
+            width: fit-content; 
+            border-radius: 0 0 40px 0;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .content-area {
+            flex-grow: 1; 
+            padding: 20px 60px 40px;
+            display: flex; 
+            flex-direction: column;
+            position: relative;
+        }
+
+        .title-slide { 
+            background: radial-gradient(circle at top right, #e3f2fd 0%, var(--white) 100%);
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+        }
+        .title-slide h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 58px; 
+            color: var(--primary-blue); 
+            margin: 0; 
+        }
+        .title-slide .subtitle { 
+            font-size: 28px; 
+            color: var(--secondary-blue); 
+            margin-top: 20px; 
+        }
+        .title-slide .accent-line {
+            width: 120px;
+            height: 6px;
+            background-color: var(--accent-yellow);
+            margin: 35px auto;
+            border-radius: 3px;
+        }
+
+        .chart-wrapper {
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 10px; }
+        th { background-color: var(--primary-blue); color: var(--white); padding: 10px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .highlight-card {
+            background: var(--bg-light);
+            padding: 15px;
+            border-left: 5px solid var(--secondary-blue);
+            border-radius: 0 10px 10px 0;
+        }
+        .highlight-card h3 { margin: 0 0 10px 0; font-size: 18px; color: var(--primary-blue); }
+        .highlight-card ul { margin: 0; padding-left: 20px; }
+        .highlight-card li { margin-bottom: 5px; }
+
+        .observation-box {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: #fff3f3;
+            border-radius: 10px;
+            border: 1px solid #ffcdd2;
+            color: #b71c1c;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: BÁO CÁO TỔNG KẾT PHÒNG ĐÀO TẠO -->
+<section class="slide-container title-slide">
+    <div style="z-index: 2;">
+        <h1><span style="color: var(--secondary-blue);">BÁO CÁO TỔNG KẾT</span><br>PHÒNG ĐÀO TẠO</h1>
+        <div class="accent-line"></div>
+        <p class="subtitle">THÁNG 11, 12 NĂM 2025 & ĐỊNH HƯỚNG THÁNG 1 NĂM 2026</p>
+        <p style="margin-top: 60px; font-weight: 500; color: var(--text-gray);">Hà Nội, ngày 05 tháng 01 năm 2026</p>
+    </div>
+</section>
+
+<!-- Slide 2: Hoạt động nổi bật tháng 12 -->
+<section class="slide-container">
+    <h2 class="slide-header">Hoạt động nổi bật tháng 12/2025</h2>
+    <div class="content-area">
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <h3><i class="fas fa-star"></i> Sự kiện & Thi cử</h3>
+                <ul>
+                    <li>Hoàn thành kỳ thi kết thúc học phần cho 45 lớp khối K23, K24.</li>
+                    <li>Tổ chức thành công Hội thi Tay nghề cấp cơ sở (Ngành CNOT & TKDH).</li>
+                    <li>Tiếp đón đoàn đánh giá ngoài kiểm định chất lượng 03 ngành trọng điểm.</li>
+                </ul>
+            </div>
+            <div class="highlight-card" style="border-left-color: var(--accent-yellow);">
+                <h3><i class="fas fa-cogs"></i> Quản lý vận hành</h3>
+                <ul>
+                    <li>Rà soát và chốt 95% dữ liệu điểm trên hệ thống UMS.</li>
+                    <li>Hoàn thiện thủ tục ghép lớp chuyên ngành giúp tiết kiệm 120 giờ giảng/tháng.</li>
+                    <li>Xử lý dứt điểm các vướng mắc về bằng cấp cho SV K21 đã tốt nghiệp.</li>
+                </ul>
+            </div>
+            <div class="highlight-card" style="border-left-color: #2e7d32;">
+                <h3><i class="fas fa-graduation-cap"></i> Chương trình Đào tạo</h3>
+                <ul>
+                    <li>Tiến hành thay đổi chương trình dựa trên các khuyến nghị từ hoạt động kiểm định.</li>
+                    <li>Rà soát, cân đối và hoàn thiện lại các modul học tập sau khi đánh giá ngoài.</li>
+                    <li>Xây dựng lộ trình cập nhật giáo trình cho học kỳ tiếp theo.</li>
+                </ul>
+            </div>
+            <div class="highlight-card" style="border-left-color: #f57c00;">
+                <h3><i class="fas fa-users"></i> Công tác Sinh viên</h3>
+                <ul>
+                    <li>Tổ chức tuần lễ định hướng thực tập cho 350 SV khối K22.</li>
+                    <li>Phối hợp khoa ngành xử lý nề nếp cho các khối có tỷ lệ đi học thấp (Tiếng Nhật).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 3: Chi tiết Chương trình & Vận hành -->
+<section class="slide-container">
+    <h2 class="slide-header">Chi tiết Chương trình & Vận hành Đào tạo</h2>
+    <div class="content-area">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Hạng mục</th>
+                    <th style="width: 35%;">Chi tiết Chương trình (Cập nhật sau kiểm định)</th>
+                    <th style="width: 40%;">Cơ chế Vận hành</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Hệ Cao đẳng (Chính quy)</strong></td>
+                    <td><strong>Đang rà soát lại:</strong> Thay đổi nội dung nhiều môn học bám sát thực tế kiểm định. Đang cân đối thời lượng giữa lý thuyết và thực hành để chuẩn bị ban hành lại.</td>
+                    <td>Quản lý qua UMS: Điểm danh bằng QR code, chấm điểm online. Giảng viên báo cáo tiến độ theo tuần.</td>
+                </tr>
+                <tr>
+                    <td><strong>Hệ 9+ (Văn hóa & Nghề)</strong></td>
+                    <td>Tối ưu hóa giáo trình văn hóa để giảm áp lực cho học sinh học song bằng. Nghề Trung cấp được tinh gọn modul thực hành.</td>
+                    <td>Phối hợp chặt chẽ giữa GV chủ nhiệm và GV bộ môn. Sổ liên lạc điện tử cập nhật hàng ngày cho phụ huynh.</td>
+                </tr>
+                <tr>
+                    <td><strong>Hệ Quốc tế (Tiếng Đức)</strong></td>
+                    <td>Bổ sung các giờ học thực tế với người bản xứ. Chương trình được thiết kế theo hướng "Học để bay ngay".</td>
+                    <td>Kiểm tra định kỳ 4 kỹ năng hàng tháng. Chú trọng nề nếp và thái độ học tập chuẩn Đức.</td>
+                </tr>
+                <tr>
+                    <td><strong>Đào tạo Doanh nghiệp</strong></td>
+                    <td>Cập nhật các bộ tiêu chuẩn ISO và an toàn lao động mới nhất vào chương trình Sơ cấp "Ván nhân tạo".</td>
+                    <td>Phòng Đào tạo trực tiếp giám sát tại hiện trường doanh nghiệp để đảm bảo chất lượng đầu ra.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Slide 4: Công suất phòng học -->
+<section class="slide-container">
+    <h2 class="slide-header">Công suất phòng học tại các cơ sở (%)</h2>
+    <div class="content-area">
+        <div class="chart-wrapper">
+            <canvas id="roomChart"></canvas>
+        </div>
+        <p style="text-align: center; color: var(--text-gray); font-style: italic; margin-top: 15px;">
+            Dữ liệu tổng hợp từ 31 phòng học lý thuyết và thực hành tại 3 cơ sở đào tạo.
+        </p>
+    </div>
+</section>
+
+<!-- Slide 5: Tỷ lệ đi học Cao đẳng -->
+<section class="slide-container">
+    <h2 class="slide-header">Tỷ lệ đi học: Khối ngành Cao đẳng (%)</h2>
+    <div class="content-area">
+        <div class="chart-wrapper">
+            <canvas id="attendCollege"></canvas>
+        </div>
+        <div class="observation-box">
+            <i class="fas fa-exclamation-triangle" style="font-size: 24px;"></i>
+            <span><strong>Nhận định:</strong> Ngành Tiếng Nhật (69%) có tỷ lệ đi học rất thấp so với mặt bằng chung. Phòng Đào tạo đã trực tiếp trao đổi với lãnh đạo Khoa ngành để tìm nguyên nhân và yêu cầu chấn chỉnh nề nếp.</span>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 6: Tỷ lệ đi học Hệ 9+ -->
+<section class="slide-container">
+    <h2 class="slide-header">Tỷ lệ đi học: Hệ 9+ (Văn hóa) (%)</h2>
+    <div class="content-area">
+        <div class="chart-wrapper">
+            <canvas id="attend9Plus"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 7: Định hướng Tháng 1/2026 -->
+<section class="slide-container">
+    <h2 class="slide-header">Định hướng công tác Tháng 1/2026</h2>
+    <div class="content-area">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 10px;">
+            <div style="background: #f1f8fe; padding: 25px; border-radius: 15px;">
+                <h3 style="color: var(--primary-blue); margin-top: 0;"><i class="fas fa-calendar-check"></i> Kế hoạch Đào tạo</h3>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Hoàn tất rà soát CTĐT:</strong> Tiếp tục hoàn thiện các modul học tập dựa trên khuyến nghị kiểm định.</li>
+                    <li><strong>Xếp thời khóa biểu Học kỳ 2:</strong> Cho toàn bộ 63 lớp, ưu tiên tiến độ thực tập.</li>
+                    <li><strong>Thi lại & Học bù:</strong> Tập trung xử lý các trường hợp nợ môn để xét tốt nghiệp K22.</li>
+                </ul>
+            </div>
+            <div style="background: #fff9e6; padding: 25px; border-radius: 15px;">
+                <h3 style="color: #9c7d00; margin-top: 0;"><i class="fas fa-tools"></i> Hệ thống & Chấn chỉnh</h3>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Chấn chỉnh nề nếp:</strong> Giám sát chặt chẽ các khoa có tỷ lệ đi học thấp (Tiếng Nhật).</li>
+                    <li><strong>Nâng cấp UMS:</strong> Tích hợp các module báo cáo tự động cho lãnh đạo.</li>
+                    <li><strong>Hồ sơ giảng dạy:</strong> Kiểm tra chéo hồ sơ HK1 trước kỳ nghỉ lễ.</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 25px; padding: 15px; border: 2px dashed var(--secondary-blue); border-radius: 10px; text-align: center;">
+            <strong style="color: var(--primary-blue);">MỤC TIÊU:</strong> Ổn định CTĐT sau kiểm định và nâng tỷ lệ đi học trung bình toàn trường lên trên 85%.
+        </div>
+    </div>
+</section>
+
+<script>
+    Chart.register(ChartDataLabels);
+
+    const commonDatalabels = {
+        anchor: 'end',
+        align: 'top',
+        formatter: (value) => value + (typeof value === 'number' && value > 30 ? '%' : ''),
+        font: { weight: 'bold', size: 14 },
+        color: '#1a2a3a'
+    };
+
+    // 1. Biểu đồ Công suất phòng
+    new Chart(document.getElementById('roomChart'), {
+        type: 'bar',
+        data: {
+            labels: ['CS Dinhle', 'CS Phúc Diễn', 'CS Cầu Giấy'],
+            datasets: [{
+                data: [86, 63, 42],
+                backgroundColor: ['#004a99', '#1e88e5', '#64b5f6'],
+                borderRadius: 8,
+                barThickness: 100
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false }, datalabels: commonDatalabels },
+            scales: { y: { beginAtZero: true, max: 110, ticks: { display: false }, grid: { display: false } } }
+        }
+    });
+
+    // 2. Tỷ lệ đi học Cao đẳng
+    new Chart(document.getElementById('attendCollege'), {
+        type: 'bar',
+        data: {
+            labels: ['UDPM', 'TH', 'CNOT', 'PDTA', 'TKDH', 'TT', 'CSSD', 'DK', 'QTDN', 'QTKS', 'TN'],
+            datasets: [{
+                data: [89, 87, 86, 84, 83, 82, 79, 75, 75, 74, 69],
+                backgroundColor: (ctx) => ctx.index === 10 ? '#d32f2f' : '#004a99',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false }, datalabels: { ...commonDatalabels, font: { size: 11 } } },
+            scales: { y: { beginAtZero: true, max: 110, ticks: { display: false }, grid: { display: false } } }
+        }
+    });
+
+    // 3. Tỷ lệ đi học Hệ 9+
+    new Chart(document.getElementById('attend9Plus'), {
+        type: 'bar',
+        data: {
+            labels: ['12A3', '12A8', '11A6', '11A9', '12A5', '12A4', '12A9', '12A10', '12A6', '11A4', '10A7', '11A7', '10A6', '11A8', '10A4', '10A5'],
+            datasets: [{
+                data: [96, 92, 91, 91, 90, 89, 89, 88, 87, 87, 86, 85, 82, 82, 80, 76],
+                backgroundColor: '#2e7d32',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false }, datalabels: { ...commonDatalabels, font: { size: 10 }, align: 'top' } },
+            scales: { y: { beginAtZero: true, max: 115, ticks: { display: false }, grid: { display: false } } }
+        }
+    });
+</script>
+
+</body>
+</html>
